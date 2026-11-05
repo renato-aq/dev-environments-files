@@ -1,0 +1,7 @@
+# ~/.config also holds credentials and machine state, so only listed folders are tracked
+/*
+!/.gitignore
+!/nvim/
+!/lazygit/
+
+.DS_Store

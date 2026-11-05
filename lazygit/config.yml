@@ -1,0 +1,30 @@
+gui:
+  mouseEvents: false
+
+git:
+  autoFetch: false
+  diffRenderers:
+    - command: delta --dark --paging=never --syntax-theme="Solarized (dark)"
+
+# `e` quits lazygit, focuses the window `;g` was pressed in, then opens the file there.
+# Lazygit runs these with $SHELL, which is zsh here, so they use POSIX syntax.
+os:
+  editPreset: nvim-remote
+  edit: >-
+    if [ -z "$NVIM" ]; then nvim -- {{filename}}; else
+    nvim --server "$NVIM" --remote-send 'q';
+    nvim --server "$NVIM" --remote-send '<C-\><C-n><Cmd>lua Raquino.lazygit.focus_origin()<CR>';
+    nvim --server "$NVIM" --remote {{filename}}; fi
+  editAtLine: >-
+    if [ -z "$NVIM" ]; then nvim +{{line}} -- {{filename}}; else
+    nvim --server "$NVIM" --remote-send 'q';
+    nvim --server "$NVIM" --remote-send '<C-\><C-n><Cmd>lua Raquino.lazygit.focus_origin()<CR>';
+    nvim --server "$NVIM" --remote {{filename}};
+    nvim --server "$NVIM" --remote-send ':{{line}}<CR>'; fi
+
+customCommands:
+  - key: C
+    context: files
+    command: git cz
+    description: Commit with commitizen
+    output: terminal
