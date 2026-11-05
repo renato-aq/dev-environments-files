@@ -24,6 +24,7 @@ vim.pack.add({
 	gh("rachartier/tiny-cmdline.nvim"),
 	-- Navigation
 	gh("stevearc/oil.nvim"),
+	gh("christoomey/vim-tmux-navigator"),
 	-- Syntax
 	{ src = gh("nvim-treesitter/nvim-treesitter"), version = "main" },
 	gh("nvim-lua/plenary.nvim"),

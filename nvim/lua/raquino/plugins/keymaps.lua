@@ -83,7 +83,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, { desc = "Previous occurrence" })
 	end,
 })
-map("n", "<C-j>", function()
+map("n", "]d", function()
 	vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Next diagnostic" })
 map("n", "<leader>f", function()
