@@ -9,6 +9,7 @@ require("mason-tool-installer").setup({
 		"tailwindcss-language-server",
 		"css-lsp",
 		"rust-analyzer",
+		"gopls",
 		"copilot-language-server",
 		-- Formatters
 		"prettier",
@@ -16,6 +17,8 @@ require("mason-tool-installer").setup({
 		"oxfmt",
 		"stylua",
 		"shfmt",
+		"goimports",
+		"gofumpt",
 	},
 	auto_update = false,
 	run_on_start = true,
@@ -29,7 +32,7 @@ vim.lsp.config("*", {
 	}),
 })
 
-vim.lsp.enable({ "eslint", "oxlint", "lua_ls", "cssls", "vtsls", "tailwindcss", "rust_analyzer" })
+vim.lsp.enable({ "eslint", "oxlint", "lua_ls", "cssls", "vtsls", "tailwindcss", "rust_analyzer", "gopls" })
 
 local icons = Raquino.icons.diagnostics
 vim.diagnostic.config({

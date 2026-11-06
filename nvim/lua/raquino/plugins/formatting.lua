@@ -39,6 +39,8 @@ require("conform").setup({
 		yaml = web,
 		lua = { "stylua" },
 		sh = { "shfmt" },
+		-- gopls formats but leaves imports alone, goimports fixes them
+		go = { "goimports", "gofumpt" },
 		fish = { "fish_indent" },
 	},
 	formatters = {
