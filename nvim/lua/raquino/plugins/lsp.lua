@@ -8,6 +8,7 @@ require("mason-tool-installer").setup({
 		"oxlint",
 		"tailwindcss-language-server",
 		"css-lsp",
+		"angular-language-server",
 		"rust-analyzer",
 		"gopls",
 		"copilot-language-server",
@@ -32,7 +33,17 @@ vim.lsp.config("*", {
 	}),
 })
 
-vim.lsp.enable({ "eslint", "oxlint", "lua_ls", "cssls", "vtsls", "tailwindcss", "rust_analyzer", "gopls" })
+vim.lsp.enable({
+	"eslint",
+	"oxlint",
+	"lua_ls",
+	"cssls",
+	"vtsls",
+	"angularls",
+	"tailwindcss",
+	"rust_analyzer",
+	"gopls",
+})
 
 local icons = Raquino.icons.diagnostics
 vim.diagnostic.config({

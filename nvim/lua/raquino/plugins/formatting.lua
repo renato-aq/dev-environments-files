@@ -34,6 +34,7 @@ require("conform").setup({
 		scss = web,
 		less = web,
 		html = web,
+		htmlangular = web,
 		markdown = web,
 		mdx = web,
 		yaml = web,

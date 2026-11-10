@@ -1,4 +1,5 @@
 require("nvim-treesitter").install({
+	"angular",
 	"astro",
 	"bash",
 	"c",

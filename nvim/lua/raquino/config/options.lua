@@ -58,6 +58,18 @@ opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldlevel = 99
 
+-- Filetypes. Neovim only sees an Angular template when @if, *ngIf and the like are in its first 40 lines,
+-- so any .html next to a .ts of the same name is one too (app.html, user.component.html).
+vim.filetype.add({
+	pattern = {
+		[".*%.html"] = function(path)
+			if vim.uv.fs_stat((path:gsub("%.html$", ".ts"))) then
+				return "htmlangular"
+			end
+		end,
+	},
+})
+
 -- Messages
 require("vim._core.ui2").enable({
 	msg = {
