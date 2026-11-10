@@ -7,6 +7,9 @@ map({ "n", "v" }, "<leader>c", '"_c')
 map({ "n", "v" }, "<leader>p", '"0p')
 map("n", "dw", 'vb"_d')
 
+-- Search
+map("n", "<Esc>", "<cmd>nohlsearch<cr><Esc>", { desc = "Clear the search highlight" })
+
 -- Numbers and selection
 map("n", "+", "<C-a>")
 map("n", "-", "<C-x>")
