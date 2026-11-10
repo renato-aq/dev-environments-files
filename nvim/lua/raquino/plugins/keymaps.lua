@@ -49,6 +49,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		lsp_map("n", "gd", function()
 			Snacks.picker.lsp_definitions()
 		end, { desc = "Go to the definition" })
+		-- Like <C-w>gf, the file under the cursor in a new tab
+		lsp_map("n", "<C-w>gd", function()
+			Snacks.picker.lsp_definitions({ confirm = "tab" })
+		end, { desc = "Open the definition in a new tab" })
 		lsp_map("n", "gD", function()
 			Snacks.picker.lsp_declarations()
 		end, { desc = "Go to the declaration" })
