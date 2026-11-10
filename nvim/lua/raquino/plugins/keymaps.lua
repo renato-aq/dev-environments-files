@@ -27,6 +27,14 @@ end, { desc = "List git hunks" })
 map("n", "sf", function()
 	require("oil").open_float(nil, { preview = {} })
 end, { desc = "Open oil" })
+map("n", ";t", function()
+	local explorer = Snacks.picker.get({ source = "explorer" })[1]
+	if explorer then
+		explorer:close()
+	else
+		Snacks.explorer()
+	end
+end, { desc = "Toggle the file tree" })
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "oil",
 	callback = function(ev)
