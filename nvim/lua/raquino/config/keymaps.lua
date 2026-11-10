@@ -14,6 +14,7 @@ map("n", "<C-a>", "gg<S-v>G")
 
 -- Tabs
 map("n", "te", "<cmd>tabedit<cr>")
+map("n", "tq", "<cmd>tabclose<cr>")
 map("n", "<Tab>", "<cmd>tabnext<cr>")
 map("n", "<S-Tab>", "<cmd>tabprevious<cr>")
 
