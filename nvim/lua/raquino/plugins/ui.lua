@@ -83,7 +83,13 @@ require("snacks").setup({
 	statuscolumn = { enabled = true },
 	words = { enabled = true },
 	scroll = { enabled = false },
-	picker = { enabled = true },
+	picker = {
+		enabled = true,
+		sources = {
+			-- <C-t> opens a tab like in the other pickers, not a terminal
+			explorer = { win = { list = { keys = { ["<c-t>"] = "tab" } } } },
+		},
+	},
 	lazygit = {
 		theme = {
 			activeBorderColor = { fg = "WarningMsg", bold = true },
