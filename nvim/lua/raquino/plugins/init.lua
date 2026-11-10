@@ -45,6 +45,12 @@ vim.pack.add({
 	gh("MunifTanjim/nui.nvim"),
 	gh("esmuellert/codediff.nvim"),
 	gh("linrongbin16/gitlinker.nvim"),
+	-- Debugging
+	gh("mfussenegger/nvim-dap"),
+	gh("nvim-neotest/nvim-nio"),
+	gh("rcarriga/nvim-dap-ui"),
+	-- .NET
+	gh("GustavEikaas/easy-dotnet.nvim"),
 	-- AI
 	gh("zbirenbaum/copilot.lua"),
 })
@@ -56,5 +62,8 @@ require("raquino.plugins.completion")
 require("raquino.plugins.lsp")
 require("raquino.plugins.formatting")
 require("raquino.plugins.git")
+-- easy-dotnet registers its adapter into nvim-dap, so dap goes first
+require("raquino.plugins.debug")
+require("raquino.plugins.dotnet")
 require("raquino.plugins.ai")
 require("raquino.plugins.keymaps")
