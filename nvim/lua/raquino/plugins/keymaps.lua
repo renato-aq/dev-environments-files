@@ -233,6 +233,48 @@ map("n", "<leader>nm", dotnet("terminal_toggle"), { desc = "Toggle the .NET term
 map("n", "<leader>tt", dotnet("testrunner"), { desc = "Toggle the test runner" })
 map("n", "<leader>tT", dotnet("test_solution"), { desc = "Test the solution" })
 
+-- Java. Buffer-local, with the test keys easy-dotnet sets in .NET test files.
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		if not client or client.name ~= "jdtls" then
+			return
+		end
+		local function java_map(mode, lhs, rhs, desc)
+			map(mode, lhs, rhs, { buffer = ev.buf, desc = desc })
+		end
+		local jdtls = require("jdtls")
+		-- Tests go through the debug adapter, noDebug runs them without stopping at breakpoints
+		local no_debug = { config_overrides = { noDebug = true } }
+
+		java_map("n", "<leader>co", jdtls.organize_imports, "Organize imports")
+		java_map("n", "<leader>cv", jdtls.extract_variable, "Extract a variable")
+		-- <Esc> first, the selection marks are only set on leaving visual mode
+		java_map(
+			"v",
+			"<leader>cv",
+			"<Esc><Cmd>lua require('jdtls').extract_variable({ visual = true })<CR>",
+			"Extract a variable"
+		)
+		java_map(
+			"v",
+			"<leader>cm",
+			"<Esc><Cmd>lua require('jdtls').extract_method({ visual = true })<CR>",
+			"Extract a method"
+		)
+		java_map("n", "<leader>tr", function()
+			jdtls.test_nearest_method(no_debug)
+		end, "Run the test")
+		java_map("n", "<leader>ta", function()
+			jdtls.test_class(no_debug)
+		end, "Run all tests in the file")
+		java_map("n", "<leader>td", jdtls.test_nearest_method, "Debug the test")
+		java_map("n", "<leader>tg", function()
+			require("jdtls.tests").goto_subjects()
+		end, "Go to the test or its subject")
+	end,
+})
+
 -- Copilot
 map("i", "<C-l>", function()
 	require("copilot.suggestion").accept()

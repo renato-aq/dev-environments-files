@@ -11,6 +11,7 @@ require("mason-tool-installer").setup({
 		"angular-language-server",
 		"rust-analyzer",
 		"gopls",
+		"jdtls",
 		"copilot-language-server",
 		-- Formatters
 		"prettier",
@@ -20,6 +21,9 @@ require("mason-tool-installer").setup({
 		"shfmt",
 		"goimports",
 		"gofumpt",
+		-- Debuggers
+		"java-debug-adapter",
+		"java-test",
 	},
 	auto_update = false,
 	run_on_start = true,
@@ -43,6 +47,7 @@ vim.lsp.enable({
 	"tailwindcss",
 	"rust_analyzer",
 	"gopls",
+	"jdtls",
 })
 
 local icons = Raquino.icons.diagnostics
